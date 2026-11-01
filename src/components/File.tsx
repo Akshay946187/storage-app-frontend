@@ -40,7 +40,7 @@ const File = ({ files, dirId, getFile }: { files: string[], dirId: string, getFi
 
         }
 
-        const { uploadSignedUrl, id } = await uploadInitate();
+        const { uploadSignedUrl } = await uploadInitate();
 
 
 
@@ -148,7 +148,7 @@ const File = ({ files, dirId, getFile }: { files: string[], dirId: string, getFi
                                 <div className="flex items-center gap-3">
                                     <span className="text-2xl">📄</span>
                                     <div>
-                                        <p className="font-medium text-gray-800 truncate max-w-[150px]">
+                                        <p className="font-medium text-gray-800 truncate max-w-37.5">
                                             {item.fileName}
                                         </p>
                                         <p className="text-xs text-gray-400">
@@ -269,7 +269,7 @@ const File = ({ files, dirId, getFile }: { files: string[], dirId: string, getFi
                             </button>
                             <button
                                 onClick={handleRename}
-                                className="flex-1 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
+                                className="flex-1 rounded-lg bg-linear-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
                             >
                                 Rename
                             </button>

@@ -4,13 +4,12 @@ interface DetailpopupProps {
     fileSize: number;
     createdAt: string;
     updatedAt: string;
-  };
-
+  } | {};
   setshowDetailPopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Detailpopup = ({item,setshowDetailPopup}:DetailpopupProps) => {
-    console.log(item)
+    if (!("fileName" in item)) return null;
   return (
    <div className="w-screen h-screen absolute top-30 flex items-center justify-center" onClick={()=>setshowDetailPopup(false)}>
      <div className="bg-gray-200 h-1/2 w-1/2 flex items-center justify-center flex-col p-5 gap-3">

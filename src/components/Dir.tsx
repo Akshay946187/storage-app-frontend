@@ -91,7 +91,7 @@ const Dir = () => {
     console.log(dirName);
     const dirurl = `${url}/dir/${folderParentId || dirId || ''}`;
     console.log(dirurl);
-    const response = await fetch(dirurl, {
+     await fetch(dirurl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const Dir = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-6">
       {/* Header Section */}
       <div className="mb-8 rounded-2xl bg-white p-6 shadow-lg">
         <div className="flex items-center justify-between">
@@ -287,7 +287,7 @@ const Dir = () => {
                     handleDirRename();
                   }
                 }}
-                className="flex-1 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
+                className="flex-1 rounded-lg bg-linear-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:from-blue-700 hover:to-blue-800 hover:shadow-lg"
               >
                 {popupType === "folder" ? "Create" : "Rename"}
               </button>
