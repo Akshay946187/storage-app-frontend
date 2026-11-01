@@ -8,10 +8,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement>(null);
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
   useEffect(() => {
     async function getData() {
       try {
-        const response = await fetch('http://localhost:3000/user/getUser', {
+        const response = await fetch(`${BACKEND_URL}/user/getUser`, {
           method: 'GET',
           credentials: 'include'
         });
@@ -48,7 +49,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/user/logout', {
+      const response = await fetch(`${BACKEND_URL}/user/logout`, {
         method: 'POST',
         credentials: 'include'
       });

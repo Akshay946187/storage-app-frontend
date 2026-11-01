@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import Detailpopup from "./Detailpopup";
 
-const url = "http://localhost:3000";
+const url =  import.meta.env.VITE_BACKEND_BASE_URL;
 
 const File = ({ files, dirId, getFile }: { files: string[], dirId: string, getFile: any }) => {
 

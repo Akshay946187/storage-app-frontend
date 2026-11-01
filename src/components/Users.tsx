@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const base_url = "http://localhost:3000";
+const base_url = import.meta.env.VITE_BACKEND_BASE_URL;
 
 interface User {
   _id: string;

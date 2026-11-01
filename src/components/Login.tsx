@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import {loginWithGoogle} from '../utiles/loginWithGoogle.ts'
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+
 interface User {
     email:string;
     password:string;
@@ -38,7 +40,7 @@ const Login = () => {
     const handleSubmit =async (e : React.ChangeEvent<HTMLFormElement>)=>{
         e.preventDefault()
         if(validation()){
-            const response = await fetch('http://localhost:3000/user/login',{
+            const response = await fetch(`${BACKEND_URL}/user/login`,{
                 method:'POST',
                 body:JSON.stringify(data),
                 headers:{
@@ -48,7 +50,17 @@ const Login = () => {
                 credentials:'include'
             })
             const resdata = await response.json()
-            navigate('/')
+            console.log(response)
+            if(response.status === 400){
+                setErrors({
+            email: resdata.message || 'Login failed. Please try again.',
+        });
+             
+            }
+            if(response.status === 200){
+              navigate('/')
+            }
+            
         }else {
             console.log('form have errors')
         }
@@ -67,7 +79,7 @@ const Login = () => {
             onClick={() => navigate('/signup')}
             className="text-sm text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 hover:underline"
           >
-            Sign Up
+            Sign In
           </button>
         </div>
         
@@ -76,6 +88,7 @@ const Login = () => {
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email Address
             </label>
+            {errors && <p>{errors.email}</p>}
             <input 
               type="text" 
               name='email' 

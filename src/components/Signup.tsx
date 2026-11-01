@@ -23,6 +23,9 @@ const Signup = () => {
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const Navigate = useNavigate()
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+  
+
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -53,7 +56,7 @@ const Signup = () => {
     e.preventDefault();
     if(success){
       if (validateForm()) {
-        const response = await fetch('http://localhost:3000/user/signup', {
+        const response = await fetch(`${BACKEND_URL}/user/signup`, {
           method: 'POST',
           body: JSON.stringify(formData),
           headers: {
@@ -75,7 +78,7 @@ const Signup = () => {
   };
   
   const sendOtp = async ()=>{
-    const res = await fetch('http://localhost:3000/user/send-otp',{
+    const res = await fetch(`${BACKEND_URL}/user/send-otp`,{
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -90,7 +93,7 @@ const Signup = () => {
   }
 
   const handleVerify = async ()=>{
-    const res = await fetch('http://localhost:3000/user/verify-otp',{
+    const res = await fetch(`${BACKEND_URL}/user/verify-otp`,{
         method: 'POST',
          body:JSON.stringify({
         email:formData.email,

@@ -15,7 +15,7 @@ const Dir = () => {
   const [dirList, setDirList] = useState<any>([]);
 
   const popupRef = useRef<HTMLDivElement>(null);
-  const url = "http://localhost:3000";
+  const url =  import.meta.env.VITE_BACKEND_BASE_URL;
   const { dirId } = useParams();
   const navigate = useNavigate();
 
