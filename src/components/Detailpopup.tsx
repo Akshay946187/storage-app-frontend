@@ -1,6 +1,15 @@
+interface DetailpopupProps {
+  item: {
+    fileName: string;
+    fileSize: number;
+    createdAt: string;
+    updatedAt: string;
+  };
 
+  setshowDetailPopup: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Detailpopup = ({item,setshowDetailPopup}) => {
+const Detailpopup = ({item,setshowDetailPopup}:DetailpopupProps) => {
     console.log(item)
   return (
    <div className="w-screen h-screen absolute top-30 flex items-center justify-center" onClick={()=>setshowDetailPopup(false)}>
